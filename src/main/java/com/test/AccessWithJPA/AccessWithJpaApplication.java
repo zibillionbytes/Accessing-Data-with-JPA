@@ -19,11 +19,13 @@ public class AccessWithJpaApplication {
 	public CommandLineRunner demo(CustomerRepository repository) {
 		return (args) -> {
 			// save a few customers
+			repository.save(new Customer("Kerim", "Tekin"));
 			repository.save(new Customer("Barış", "Manço"));
-			repository.save(new Customer("Cem", "Karaca"));
-			repository.save(new Customer("Erkin", "Koray"));
-			repository.save(new Customer("Ahmet", "Güvenç"));
-			repository.save(new Customer("Cahit", "Berkay"));
+			repository.save(new Customer("Sertab", "Erener"));
+			repository.save(new Customer("Harun", "Tekin"));
+			repository.save(new Customer("Rasim", "Öztekin"));
+			repository.save(new Customer("Özlem", "Tekin"));
+			repository.save(new Customer("Cem", "Yılmaz"));
 
 			// fetch all customers
 			log.info("Customers found with findAll():");
@@ -34,17 +36,17 @@ public class AccessWithJpaApplication {
 			log.info("");
 
 			// fetch an individual customer by ID
-			Customer customer = repository.findById(1L);
-			log.info("Customer found with findById(1L):");
+			Customer customer = repository.findById(5L);
+			log.info("Customer found with findById(5L):");
 			log.info("--------------------------------");
 			log.info(customer.toString());
 			log.info("");
 
 			// fetch customers by last name
-			log.info("Customer found with findByLastName('Bauer'):");
+			log.info("Customer found with findByLastName('Tekin'):");
 			log.info("--------------------------------------------");
-			repository.findByLastName("Güvenç").forEach(güvenç -> {
-				log.info(güvenç.toString());
+			repository.findByLastName("Tekin").forEach(tekin -> {
+				log.info(tekin.toString());
 			});
 			log.info("");
 		};
